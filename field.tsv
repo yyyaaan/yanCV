@@ -1,0 +1,28 @@
+lang	field	value
+ENG	title	Yan PAN | Curriculum Vitae
+FIN	title	Yan PAN | Ansioluettelo
+CHN	title	潘䶮 | 简历
+ENG	expt	Experiences and Education
+FIN	expt	Kokemukset ja Koulutukset
+CHN	expt	教育及履历
+ENG	A	Solid skills in organizing, analyzing and presenting data sets. Capable of performing various type of prediction, evaluation, profiling and inducing management implications.
+FIN	A	Tiedon järjestäminen, analysointi ja esittäminen; laitan ne käytäntöön Shiny:n, Google Cloudin, AWS:n avulla, ja sitten teen hyvin ennusteita, arviointia, profilointia ja johtamisvaikutuksia.
+CHN	A	数据整理、归纳、分析和展示的实战经验，使用Google云，Amazon云，Shiny等服务实现云端数据服务，并可灵活应用各类预测模型
+ENG	At	Data Analysis
+FIN	At	Dataa-anlyysi
+CHN	At	数据分析
+FIN	B	Voimakas tietämys rahoitusriskien hallinnasta ja yritysrahoituksesta; olen ihan perehtynyt pankkiteollisuuteen ja kykenevä taloudellinen raporttianalyysi
+FIN	Bt	Taustat Rahoituksessa
+FIN	C	Ohjelmakielit C, PHP, Java, JS... R:n lisäksi. Osaa Adobe Creative PS, PR, ID, jne. ja  tietysti eronomaiset taidot Office-ohjelmassa Word, Excel ja PowerPoint.
+FIN	Ct	Kehittynyt tietokonekäsittely
+ENG	B	Strong knowledge and practical ability in Financial Risk Management, Corporate Finance; familiar with bank industry.
+ENG	Bt	Finance Background
+ENG	C	Experineced in programming language PHP, C, Java, JS in addition to R; Capable of using Adobe Creative Suite, PS, PR, ID, etc; and of course excellent skills in Word, Excel, PowerPoint 
+ENG	Ct	Adv. Computer Science
+CHN	B	坚实的金融背景
+CHN	Bt	金融风险管理、公司金融的深度知识和应用能力；熟悉银行业。
+CHN	C	高级计算机科学
+CHN	Ct	除统计编程语言R外，亦熟悉PHP、C、Java、JS等常见编程语言。能够熟练使用Adoble CS系列中的PS、PR、ID；当然也是Word，Excel和PowerPoint的高级资深用户
+ENG	main	Using Science, Data and Innovation to Make a Difference
+FIN	main	Parempi Elämä Tieteen, Datan ja Innovaation Avulla
+CHN	main	Using Science, Data and Innovation to Make a Difference

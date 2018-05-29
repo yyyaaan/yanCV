@@ -1,25 +1,22 @@
 library(shinymaterial)
 library(timevis)
 
-VAR_COL_1 <- "blue-grey"
+VAR_COL_1 <- "cyan"
 VAR_COL_2 <- "cyan" 
 
 material_page(
  
-  title = "",
+  title = NULL,
   nav_bar_color = VAR_COL_1,
   nav_bar_fixed = FALSE,
-  tags$head(tags$style("
-      .modal{background-color: transparent; width: 100%; max-height: 100% }
-      .collection .collection-item.avatar{min-height: 30px}
-  ")),
+  tags$head(tags$link(rel = "stylesheet", type = "text/css", href = "style.css")),
   
 
   # side nav ----------------------------------------------------------------
 
 
   material_side_nav(
-    fixed = TRUE,
+    fixed = FALSE,
     image_source = "theme.png",
     
     material_side_nav_tabs(
@@ -29,24 +26,23 @@ material_page(
     ),
     
     tags$hr(),
-    material_radio_button("lang", "Languages",
-                          choices = c(" English" = "ENG", " Suomeksi" = "FIN"," 简体中文" = "CHN")),
-             
+    
+    material_radio_button("lang", "Language Preference",
+                          choices = c(" English" = "ENG", " Suomeksi" = "FIN"," 简体中文" = "CHN")),         
     tags$br(),
-    tags$p(class="center-align","Copyright Yan PAN 2018")
+    tags$p(class="center-align", tags$small("Copyright Yan PAN 2018"))
   ),
   
-
   # 1st ---------------------------------------------------------------------
-
+  
   material_side_nav_tab_content(
     side_nav_tab_id = "tab1",
-    tags$div(
-      class = "container",
-      tags$p("hello tab 1")
+    material_row(
+      tags$div( class = "col s12 m4", material_card("Hello")),
+      tags$div( class = "col s12 m8", tags$div(class = "timeline",uiOutput("vTimeline")))
     )
   ),
-
+  
   # 2nd ---------------------------------------------------------------------
 
   material_side_nav_tab_content(
@@ -58,26 +54,34 @@ material_page(
       material_column(width = 12, material_card("", timevisOutput("myExp")))
     ),
     material_row(
-      tags$div(class="col s12 m8", 
-               material_card(textOutput("expt"), dataTableOutput("myExpDT"))),
-      tags$div(class = "col s12 m4",
-        tags$ul(class="collection",
-                tags$li(class = "teal lighten-4 collection-item avatar",
-                        tags$i(class = "circle teal material-icons", "dashboard"),
-                        uiOutput("At")),
-                tags$li(class = "collection-item",uiOutput("A")),
-                tags$li(class = "amber lighten-4 collection-item avatar",
-                        tags$i(class = "circle amber material-icons", "credit_card"),
-                        uiOutput("Bt")),
-                tags$li(class = "collection-item",uiOutput("B")),
-                tags$li(class = "red  lighten-4 collection-item avatar",
-                        tags$i(class = "circle red material-icons", "developer_mode"),
-                        uiOutput("Ct")),
-                tags$li(class = "collection-item",uiOutput("C"))
+      tags$div(
+        class="col s12 m8",
+        material_card(textOutput("expt"), dataTableOutput("myExpDT"))
+      ),
+      tags$div(
+        class = "col s12 m4",
+        tags$ul(
+          class="collection",
+           tags$li(class = "collection-item avatar",
+                   tags$i(class = paste(VAR_COL_1, "circle material-icons"), "dashboard"),
+                   uiOutput("At")),
+           tags$li(class = "collection-item",uiOutput("A")),
+           tags$li(class = "collection-item avatar",
+                   tags$i(class = paste(VAR_COL_1, "circle material-icons"), "credit_card"),
+                   uiOutput("Bt")),
+           tags$li(class = "collection-item",uiOutput("B")),
+           tags$li(class = "collection-item avatar",
+                   tags$i(class = paste(VAR_COL_1, "circle material-icons"), "developer_mode"),
+                   uiOutput("Ct")),
+           tags$li(class = "collection-item",uiOutput("C"))
         )
+
       )
     )
   ),
+  
+
+  
 
   # 3rd ---------------------------------------------------------------------
 
