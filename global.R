@@ -1,3 +1,4 @@
+
 # https://www.materialpalette.com/
 myColors <- c("red", "pink", "purple", "deep-purple", "indigo", "blue", "light-blue",
               "cyan", "teal", "green", "light-green", "lime", "yellow", "amber",
@@ -6,41 +7,27 @@ myColors.rgb <- c("rgba(244, 67, 54, 0.1)", "rgba(233, 30, 99, 0.1)", "rgba(156,
                   "rgba(0, 188, 212, 0.1)", "rgba(0, 150, 136, 0.1)", "rgba(76, 175, 80, 0.1)", "rgba(139, 195, 74, 0.1)", "rgba(205, 220, 57, 0.1)", "rgba(255, 235, 59, 0.1)", "rgba(255, 193, 7, 0.1)",
                   "rgba(255, 152, 0, 0.1)", "rgba(255, 87, 34, 0.1)", "rgba(121, 85, 72, 0.1)", "rgba(158, 158, 158, 0.1)", "rgba(96, 125, 139, 0.1)")
 
-
-getExp <- function(lang = "ENG") {
-
-  myExp <- read.delim2("exp.tsv")
-  n <- nrow(myExp)
-
-  col <-  which(colnames(myExp) == lang)
-  myExp <- myExp[, c(1:4, col, col + 1, col + 2, col + 3)]
-  myExp$id <- 1:n
-  
-  #nice output
-  myExp$content <- character(n)
-  for (i in 1:n) {
-    myExp$content[i] <- paste0(strong(myExp[i,5]),
-                               p(myExp[i,7]))
-  }
-
-  #set group lang
-  groupDF <- data.frame(id = unique(myExp$group), content = unique(myExp[,6]))
-  
-  return(list(ts = myExp[,c(9,1,2,3,10,4)],
-              dt = myExp[,c(1,2,6,5,7,8)],
-              grp = groupDF))
+syncGoogle <- function(){
+  all <- gsheet::gsheet2tbl("https://docs.google.com/spreadsheets/d/1CoMi_EfK950iXk_iuCSujY6Sq6e38VnYExXDo4sMONA/edit#gid=1164046835")
+  saveRDS(all, file = "all.rds")
 }
 
-getField <- function(l){
+getField <- function(lang = "CHN"){
   
-  fld <- read.delim2("field.tsv") %>%  subset(lang == l)
-  lst <- fld$value %>% as.character() %>% as.list()
-  names(lst) <- fld$field
-  return(lst)
+  fld <- readRDS("all.rds") %>% subset(language == lang | language == "ALL")
+  namedList <- list()
+    # pack the vectors
+  for (curKey in unique(fld$key)) {
+    curValue <- fld %>% subset(key == curKey)
+    namedList[[length(namedList) + 1]] <- curValue$value
+  }
+    # name the list
+  names(namedList) <- unique(fld$key)
+  return(namedList)
 }
 
 createEvent <- function(title = "Title", summary = "summary", detail = "detail", 
-                        main_icon = "language", labels = c("NA"), img_src = "qr.png"){
+                        main_icon = "language", labels = c("NA"), img_src = ""){
 
   iCol <- sample(1:19, 1)
   
@@ -86,8 +73,6 @@ createEvent <- function(title = "Title", summary = "summary", detail = "detail",
     timeIcon
   )
 }
-
-length(myColors)
 
 
 

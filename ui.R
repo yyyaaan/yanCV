@@ -38,8 +38,18 @@ material_page(
   material_side_nav_tab_content(
     side_nav_tab_id = "tab1",
     material_row(
-      tags$div( class = "col s12 m4", material_card("Hello")),
-      tags$div( class = "col s12 m8", tags$div(class = "timeline",uiOutput("vTimeline")))
+      tags$div(
+        class = "col s12",
+        material_card(title = textOutput("mainTitle"))
+      )
+    ),
+    material_row(
+      tags$div( class = "col s12 m6", material_card("Hello")),
+      tags$div(
+        class = "col s12 m6", 
+        material_card("Experiences"), 
+        tags$div(class = "timeline",uiOutput("vTimeline"))
+      )
     )
   ),
   
