@@ -19,7 +19,7 @@ shinyServer(function(input, output, session) {
                                      summary = main$expPosition[i],
                                      detail = main$expDescription[i],
                                      labels = strsplit(main$expType[i], " ")[[1]], 
-                                     img_src = paste0("banner_", main$expImgsrc[i]))
+                                     img_src = paste0("banner-", main$expImgsrc[i]))
     }
     output$vTimeline <- renderUI(tagList(timeEvents))
     
