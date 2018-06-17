@@ -26,6 +26,27 @@ getField <- function(lang = "CHN"){
   return(namedList)
 }
 
+createCollection <- function(main = "Collection", items){
+  theItems <- list()
+  for (i in 1:length(items)) {
+    iCol <- sample(1:19, 1)
+    itemSplit <- strsplit(items[i], " - ")[[1]]
+    
+    theItems[[i]] <- tags$a(
+      href = "#",
+      class = "collection-item avatar",
+      tags$i(class = paste("material-icons", myColors[iCol], "circle"), itemSplit[1]),
+      tags$span(class = "title", itemSplit[2]),
+      tags$p(style = "color: grey", itemSplit[3])
+    )
+  }
+  
+  tagList(
+    tags$span(class = "card-title", main),
+    tags$div(class = "collection", tagList(theItems))
+  )
+}
+
 createEvent <- function(title = "Title", summary = "summary", detail = "detail", 
                         main_icon = "language", labels = c("NA"), img_src = ""){
 
@@ -64,7 +85,6 @@ createEvent <- function(title = "Title", summary = "summary", detail = "detail",
   timeIcon <- tags$div(
     class = paste("timeline-badge", myColors[iCol], "white-text"),
     tags$i(class = "material-icons", main_icon)
-    # p("2018")
   )
   
   tags$div(

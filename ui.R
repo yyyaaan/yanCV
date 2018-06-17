@@ -6,14 +6,13 @@ VAR_COL_2 <- "cyan"
 
 material_page(
  
-  title = NULL,
+  title = "Using Science, Data and Innovation to Make a Difference",
   nav_bar_color = VAR_COL_1,
   nav_bar_fixed = FALSE,
   tags$head(tags$link(rel = "stylesheet", type = "text/css", href = "style.css")),
   
 
   # side nav ----------------------------------------------------------------
-
 
   material_side_nav(
     fixed = FALSE,
@@ -28,9 +27,11 @@ material_page(
     tags$hr(),
     
     material_radio_button("lang", "Language Preference",
-                          choices = c(" English" = "ENG", " Suomeksi" = "FIN"," 简体中文" = "CHN")),         
+                          choices = c(" English" = "ENG", " Suomeksi" = "FIN"," 简体中文" = "CHN")),
     tags$br(),
-    tags$p(class="center-align", tags$small("Copyright Yan PAN 2018"))
+    tags$p(class="center-align", tags$small("Copyright Yan PAN 2018")),
+    tags$br(),
+    material_checkbox("showCard", "display hidden contents", F)
   ),
   
   # 1st ---------------------------------------------------------------------
@@ -38,20 +39,27 @@ material_page(
   material_side_nav_tab_content(
     side_nav_tab_id = "tab1",
     material_row(
+      tags$div( 
+        class = "col s12 m5", 
+        material_card(
+          "Yan PAN",
+          tags$i(class = "tiny material-icons", "email"), tags$a(href = "mailto:yan@yan.fi", "yan@yan.fi  "),
+          tags$i(class = "tiny material-icons", "phone_in_talk"), "+358 44 919 9857   ",
+          tags$i(class = "tiny material-icons", "phonelink"),  tags$a(href = "https://yan.fi", "https://yan.fi  ")
+        ),
+        material_card( 
+          "Strengths",
+          uiOutput("strengh")
+        )
+      ),
       tags$div(
-        class = "col s12",
-        material_card(title = textOutput("mainTitle"))
-      )
-    ),
-    material_row(
-      tags$div( class = "col s12 m6", material_card("Hello")),
-      tags$div(
-        class = "col s12 m6", 
+        class = "col s12 m7", 
         material_card("Experiences"), 
         tags$div(class = "timeline",uiOutput("vTimeline"))
       )
     )
   ),
+  
   
   # 2nd ---------------------------------------------------------------------
 

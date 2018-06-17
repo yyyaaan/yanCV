@@ -3,21 +3,34 @@ library(shinymaterial)
 shinyServer(function(input, output, session) {
   
   observeEvent(input$lang, {
-    # cache
+    
+    # main object, cache ------------------------------------------------------
     main <- getField(input$lang)
     
     
+    # strengths ---------------------------------------------------------------
+    
+    output$strengh <- renderUI(
+      tagList(main$strMain, tags$br(),
+              createCollection(main$strAtitle, main$strA),
+              createCollection(main$strBtitle, main$strB), 
+              createCollection(main$strCtitle, main$strC)
+              )
+    )
 
-    # maintitle ---------------------------------------------------------------
-    output$mainTitle <- renderText(main$main)
+    
     
     # Vertical Timeline -------------------------------------------------------
+    
+    if(input$showCard) summary <- paste(main$expPosition, "| ", main$expDescription)
+    else summary <- main$expPosition
     
     timeEvents <- NULL
     for (i in 1:length(main$expStart)) {
       timeEvents[[i]] <- createEvent(title = main$expMain[i],
-                                     summary = main$expPosition[i],
+                                     summary = summary[i],
                                      detail = main$expDescription[i],
+                                     main_icon = main$expIcon[i],
                                      labels = strsplit(main$expType[i], " ")[[1]], 
                                      img_src = paste0("banner-", main$expImgsrc[i]))
     }
@@ -29,6 +42,7 @@ shinyServer(function(input, output, session) {
     
     
     # timevis -----------------------------------------------------------------
+    
     output$myExp <- renderTimevis(timevis(data = data.frame(id = 1:length(main$expStart),
                                                             start = main$expStart,
                                                             end = main$expEnd,
@@ -64,7 +78,8 @@ shinyServer(function(input, output, session) {
                                     tags$br(),
                                     tags$p('available interactively at cv.yan.fi'),
                                     tags$img(src = "qr.png", width = "39%"),
-                                    tags$p('Powered by Shiny | This new CV keeps updating')))
+                                    tags$p('Powered by Shiny | This new CV keeps updating'))
+                            )
     
   })
   

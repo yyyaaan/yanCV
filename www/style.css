@@ -1,3 +1,8 @@
+/*timeline card title*/
+.card .card-content .card-title {
+  font-size: 20px;
+  line-height: normal;
+}
 /*language selector*/
 #lang{
   padding-left:32px;
