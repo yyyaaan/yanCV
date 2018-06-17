@@ -40,7 +40,7 @@ material_page(
     side_nav_tab_id = "tab1",
     material_row(
       tags$div( 
-        class = "col s12 m5", 
+        class = "col s12 m4", 
         material_card(
           "Yan PAN",
           tags$i(class = "tiny material-icons", "email"), tags$a(href = "mailto:yan@yan.fi", "yan@yan.fi  "),
@@ -48,12 +48,12 @@ material_page(
           tags$i(class = "tiny material-icons", "phonelink"),  tags$a(href = "https://yan.fi", "https://yan.fi  ")
         ),
         material_card( 
-          "Strengths",
-          uiOutput("strengh")
+          uiOutput("strTitle"),
+          uiOutput("strDetail")
         )
       ),
       tags$div(
-        class = "col s12 m7", 
+        class = "col s12 m8", 
         material_card("Experiences"), 
         tags$div(class = "timeline",uiOutput("vTimeline"))
       )

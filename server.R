@@ -9,9 +9,9 @@ shinyServer(function(input, output, session) {
     
     
     # strengths ---------------------------------------------------------------
-    
-    output$strengh <- renderUI(
-      tagList(main$strMain, tags$br(),
+    output$strTitle <- renderText(main$strMain)
+    output$strDetail <- renderUI(
+      tagList(main$strDetail, tags$br(), tags$hr(), tags$br(),
               createCollection(main$strAtitle, main$strA),
               createCollection(main$strBtitle, main$strB), 
               createCollection(main$strCtitle, main$strC)
@@ -34,7 +34,9 @@ shinyServer(function(input, output, session) {
                                      labels = strsplit(main$expType[i], " ")[[1]], 
                                      img_src = paste0("banner-", main$expImgsrc[i]))
     }
-    output$vTimeline <- renderUI(tagList(timeEvents))
+    output$vTimeline <- renderUI(
+      tags$div(style = "margin-top: 106px", timeEvents)
+    )
     
 
     
@@ -60,7 +62,11 @@ shinyServer(function(input, output, session) {
                         position = main$expPosition,
                         description = main$expDescription)
     output$myExpDT <- renderDataTable(expDf,options = list(dom = 't'))
-    output$title <- renderUI(tagList(h2(main$main),h4(main$title)))
+    
+
+    # titles in old -----------------------------------------------------------
+    
+    output$title <- renderUI(h4(main$title))
     output$expt <- renderText(main$expFieldTitle)
     
     

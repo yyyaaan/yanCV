@@ -36,6 +36,8 @@ label{
 }
  .timeline .timeline-event .timeline-content {
      position: relative;
+/*modification here*/
+     margin-top: -109px;
      width: calc(50% - 50px);
 }
  .timeline .timeline-event::before {
@@ -89,6 +91,7 @@ label{
  @media (max-width: 600px) {
      .timeline .timeline-event .timeline-content {
          width: calc(100% - 70px);
+         margin-top: 5px; /*modification here*/
     }
      .timeline .timeline-event::before {
          left: 19px;
