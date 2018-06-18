@@ -25,13 +25,16 @@ material_page(
     ),
     
     tags$hr(),
+    tags$div(
+      style = "padding-left:22px;",
+      material_radio_button("lang", "Language Preference",
+                            choices = c(" English" = "ENG", " Suomeksi" = "FIN"," 简体中文" = "CHN")),
+      tags$br(),
+      material_checkbox("showCard", "display hidden contents", F)
+    ),
     
-    material_radio_button("lang", "Language Preference",
-                          choices = c(" English" = "ENG", " Suomeksi" = "FIN"," 简体中文" = "CHN")),
     tags$br(),
-    tags$p(class="center-align", tags$small("Copyright Yan PAN 2018")),
-    tags$br(),
-    material_checkbox("showCard", "display hidden contents", F)
+    tags$p(class="center-align", tags$small("Copyright Yan PAN 2018"))
   ),
   
   # 1st ---------------------------------------------------------------------

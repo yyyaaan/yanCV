@@ -31,7 +31,7 @@ shinyServer(function(input, output, session) {
                                      summary = summary[i],
                                      detail = main$expDescription[i],
                                      main_icon = main$expIcon[i],
-                                     labels = strsplit(main$expType[i], " ")[[1]], 
+                                     labels = strsplit(main$expChips[i], " ")[[1]], 
                                      img_src = paste0("banner-", main$expImgsrc[i]))
     }
     output$vTimeline <- renderUI(

@@ -1,12 +1,3 @@
-/*timeline card title*/
-.card .card-content .card-title {
-  font-size: 20px;
-  line-height: normal;
-}
-/*language selector*/
-#lang{
-  padding-left:32px;
-}
 label{ 
   color:#C0C0C0;
 }
@@ -23,11 +14,21 @@ label{
   background-color: #e1f5fe
 }
 
+
+
+
+/*timeline card title*/
+.card .card-content .card-title {
+  font-size: 20px;
+  line-height: normal;
+}
+
 /*import*/
 /*import*/
 /*import timelines*/
 .timeline {
      position: relative;
+     margin-top: 103px;   /*modification here*/
 }
  .timeline .timeline-event {
      position: relative;
@@ -36,8 +37,7 @@ label{
 }
  .timeline .timeline-event .timeline-content {
      position: relative;
-/*modification here*/
-     margin-top: -109px;
+     margin-top: -109px;  /*modification here*/
      width: calc(50% - 50px);
 }
  .timeline .timeline-event::before {
