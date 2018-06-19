@@ -28,7 +28,7 @@ label{
 /*import timelines*/
 .timeline {
      position: relative;
-     margin-top: 103px;   /*modification here*/
+     margin-top: 109px;   /*modification here*/
 }
  .timeline .timeline-event {
      position: relative;
@@ -37,7 +37,7 @@ label{
 }
  .timeline .timeline-event .timeline-content {
      position: relative;
-     margin-top: -109px;  /*modification here*/
+     margin-top: -99px;  /*modification here*/
      width: calc(50% - 50px);
 }
  .timeline .timeline-event::before {

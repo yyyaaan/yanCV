@@ -2,7 +2,7 @@ library(shinymaterial)
 
 shinyServer(function(input, output, session) {
   
-  observeEvent(input$lang, {
+  observeEvent({input$lang; input$showCard}, {
     
     # main object, cache ------------------------------------------------------
     main <- getField(input$lang)
@@ -10,9 +10,9 @@ shinyServer(function(input, output, session) {
     
     # strengths ---------------------------------------------------------------
     output$strTitle <- renderText(main$strMain)
-    output$strDetail <- renderUI(
-      tagList(main$strDetail, tags$br(), tags$hr(), tags$br(),
-              createCollection(main$strAtitle, main$strA),
+    output$strDetail <- renderText(main$strDetail)
+    output$strList <- renderUI(
+      tagList(createCollection(main$strAtitle, main$strA),
               createCollection(main$strBtitle, main$strB), 
               createCollection(main$strCtitle, main$strC)
               )

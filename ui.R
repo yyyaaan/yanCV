@@ -19,9 +19,9 @@ material_page(
     image_source = "theme.png",
     
     material_side_nav_tabs(
-      side_nav_tabs = c("1st Nav" = "tab1", "2nd Nav" = "tab2", 
-                        "3rd Nav" = "tab3", "Source" = "tab4"),
-      icons = c("donut_small", "assignment_ind", "assessment", "code")
+      side_nav_tabs = c("I am Yan" = "tab1", "Another CV" = "tab2", 
+                        "Source" = "tab4"),
+      icons = c("assignment_ind", "assessment", "code")
     ),
     
     tags$hr(),
@@ -47,12 +47,19 @@ material_page(
         material_card(
           "Yan PAN",
           tags$i(class = "tiny material-icons", "email"), tags$a(href = "mailto:yan@yan.fi", "yan@yan.fi  "),
-          tags$i(class = "tiny material-icons", "phone_in_talk"), "+358 44 919 9857   ",
-          tags$i(class = "tiny material-icons", "phonelink"),  tags$a(href = "https://yan.fi", "https://yan.fi  ")
+          tags$i(class = "tiny material-icons", "phone_in_talk"),  tags$a(href = "tel:+358449199857", "+358 44 919 9857  "),
+          tags$br(),
+          tags$i(class = "tiny material-icons", "dvr"),  tags$a(href = "https://boring.fi", "https://boring.fi (projects/data-server)  "),
+          tags$br(),
+          tags$i(class = "tiny material-icons", "phonelink"),  tags$a(href = "https://yan.fi", "https://yan.fi  (general)")
         ),
         material_card( 
           uiOutput("strTitle"),
           uiOutput("strDetail")
+        ),
+        material_card(
+          "",
+          uiOutput("strList")
         )
       ),
       tags$div(
@@ -105,14 +112,14 @@ material_page(
   
 
   # 3rd ---------------------------------------------------------------------
-
-  material_side_nav_tab_content(
-    side_nav_tab_id = "tab3",
-    tags$div(
-      class = "container",
-      tags$p("hello tab 3")
-    )
-  ),
+# 
+#   material_side_nav_tab_content(
+#     side_nav_tab_id = "tab3",
+#     tags$div(
+#       class = "container",
+#       tags$p("hello tab 3")
+#     )
+#   ),
   
 
   # 4th ---------------------------------------------------------------------
