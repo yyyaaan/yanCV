@@ -11,12 +11,10 @@ shinyServer(function(input, output, session) {
     # strengths ---------------------------------------------------------------
     output$strTitle <- renderText(main$strMain)
     output$strDetail <- renderText(main$strDetail)
-    output$strList <- renderUI(
-      tagList(createCollection(main$strAtitle, main$strA),
-              createCollection(main$strBtitle, main$strB), 
-              createCollection(main$strCtitle, main$strC)
-              )
-    )
+    output$strA <- renderUI(createCollection(main$strAtitle, main$strA))
+    output$strB <- renderUI(createCollection(main$strBtitle, main$strB))
+    output$strC <- renderUI(createCollection(main$strCtitle, main$strC))
+    
 
     
     

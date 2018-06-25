@@ -1,3 +1,4 @@
+# trial in new
 library(datamaps)
 
 coords <- data.frame(
@@ -10,3 +11,4 @@ coords <- data.frame(
 coords %>% datamaps() %>%
   markers_options(label = "hello", icon = list(url = "text", width = 20, height = 20), fillOpacity = 1) %>%
   add_markers(lon, lat)
+

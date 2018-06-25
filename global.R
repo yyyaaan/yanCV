@@ -1,4 +1,4 @@
-
+# updated to v1.1
 # https://www.materialpalette.com/
 myColors <- c("red", "pink", "purple", "deep-purple", "indigo", "blue", "light-blue",
               "cyan", "teal", "green", "light-green", "lime", "yellow", "amber",
