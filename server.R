@@ -13,16 +13,15 @@ shinyServer(function(input, output, session) {
     output$strDetail <- renderText(main$strDetail)
     output$strA <- renderUI(createCollection(main$strAtitle, main$strA))
     output$strB <- renderUI(createCollection(main$strBtitle, main$strB))
-    output$strC <- renderUI(createCollection(main$strCtitle, main$strC))
-    
 
-    
-    
-    # Vertical Timeline -------------------------------------------------------
-    
-    if(input$showCard) summary <- paste(main$expPosition, "| ", main$expDescription)
-    else summary <- main$expPosition
-    
+
+    # Vertical Timeline ------------------------------------------------------
+
+    summary <- paste(main$expPosition, "|",
+                         main$expStart %>% as.Date() %>% format("%b %Y"), "-", 
+                         main$expEnd %>% as.Date() %>% format("%b %Y"))
+    if(input$showCard) summary <- paste(summary, "| ", main$expDescription)
+
     timeEvents <- NULL
     for (i in 1:length(main$expStart)) {
       timeEvents[[i]] <- createEvent(title = main$expMain[i],
@@ -35,11 +34,8 @@ shinyServer(function(input, output, session) {
     output$vTimeline <- renderUI(
       tags$div(style = "margin-top: 106px", timeEvents)
     )
-    
+  
 
-    
-    
-    
     
     # timevis -----------------------------------------------------------------
     
