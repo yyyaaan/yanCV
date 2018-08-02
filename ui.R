@@ -58,7 +58,9 @@ material_page(
           uiOutput("strDetail")
         ),
         material_card("",uiOutput("strA")),
-        material_card("",uiOutput("strB"))
+        material_card("",uiOutput("strB")),
+        tags$p(style = "font-style: italic; text-align: center", 
+               tags$a(href = "http://cv.yan.fi", "more details at http://cv.yan.fi"))
       ),
       tags$div(
         class = "col s12 m7", 
@@ -128,19 +130,20 @@ material_page(
   material_side_nav_tab_content(
     side_nav_tab_id = "tab3",
     tags$div(class = "col s12 m12",
-             #material_card("", "This brief letter seeks to convey my passion for the business/financial analyst position in Caverion by elaborating relevant details about my strengths and experiences."),
+             #material_card("", "This brief letter seeks to deliver my application for credit risk analyst in Ikano Bank by elaborating relevant details about my strengths and experiences."),
              
-             #material_card("Analytical-Minded Solution Maker", "In my working and studying, the task is always to find the solution despite limitation of systems and tools. Strong background in Economics, Finance and Statistics provides me with a analytics-driven mind that searches for the possibly best solutions and even push ahead. The recent project in my current position features for the innovative, reliable and cost-efficient cumulative reporting and business intelligence, where self-learning in multiple programming language API is utilised. Similar to my previous full-time work in Bank of Shanghai, except for accuracy, emphasis is laid to beyond-numeric analysis that focuses on the implication, and thereafter, deliver the solutions, improvements and advancements. In addition, learning capability with eagerness for new knowledge can continuously extend my skills."),
+             #material_card("Analytical-Minded Solution Maker", "In my working and studying, the task is always to find the solution despite limitation of systems and tools. Strong background in Economics, Finance and Statistics provides me with a analytics-driven mind that searches for the possibly best solutions and even push ahead in a highly organised manner. The recent project in my current position features for the innovative, reliable and cost-efficient cumulative data analysis/business intelligence, where self-learning in multiple programming language API is utilised. Similar to my previous full-time work in Bank of Shanghai, except for accuracy, emphasis is laid to beyond-numeric analysis that focuses on the implication, and thereafter, deliver the solutions, improvements and advancements. In addition, learning capability with eagerness for new knowledge continuously extends my skills."),
              
              #material_card("Competence and Experiences in both Finance and Statistics", "Since bachelor's study, corporate finance(incl. management accounting, risk management) has greatly attracted my interests. 3-year experience in a major regional branch of a large bank provided me further practical knowledge in financial markets. During both full-time work experiences, I have been actively dealing with accounting and financing affairs in an self-organised systematic manner that seeks for accuracy and efficient.  Empowered by modern stochastic models and statistical tools, such financial knowledge can be materialised into practical skills in insightful financial statement analysis, risk and liquidity modelling etc."),
              
-             #material_card("Data Science Enthusiastic and Finance Insider", "The meaning of data science is much more than study and work; it is a joyful entertainment for me. Whenever I explore some interesting information, financial statements are also first consulted, as I believe such audited information is unbiased and most reliable among public information. During the past few year, I have succeeded in pursuing academic competence without compromising full-time work"),
+             #material_card("Data Science Enthusiast and Finance Insider", "The meaning of data science is much more than study and work; it is a joyful entertainment for me. Whenever I explore some interesting information, financial statements are also first consulted, as I believe such audited information is unbiased and most reliable among public information. During the past few year, I have succeeded in pursuing academic competence without compromising full-time work"),
              
-             #material_card("Team Intelligence", "Artificial Intelligence and Business Intelligence may shape the modern world; however, I firmly believe that Team Intelligence that promotes team efforts and smooth communication is the key to the success. For analysis and prediction tasks, it should be critical to communicate in depth to ensure the accurate understanding of the backgrounds, needs and objectives."),   
-             
+             #material_card("Team Intelligence", "Artificial Intelligence and Business Intelligence may shape the modern world; however, I firmly believe that Team Intelligence that promotes team efforts and smooth communication is the key to the success. For credit risk analysis, it is critical to communicate in depth to ensure the accurate understanding of the backgrounds, needs and objectives in addition to active learning."),
                           
       material_card(
-        "Contact",
+        "Yan Pan",
+        #tags$p("Salary wish: 2550 EUR/month (acceptable level 2250 EUR/month)"),
+        tags$br(),
         tags$i(class = "tiny material-icons", "email"), tags$a(href = "mailto:yan@yan.fi", "yan@yan.fi  "),
         tags$i(class = "tiny material-icons", "phone_in_talk"),  tags$a(href = "tel:+358449199857", "+358 44 919 9857  "),
         tags$br(),
@@ -150,5 +153,4 @@ material_page(
       )
     )
   )
-  
 )
