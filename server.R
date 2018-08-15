@@ -32,7 +32,7 @@ shinyServer(function(input, output, session) {
                                      img_src = paste0("banner-", main$expImgsrc[i]))
     }
     output$vTimeline <- renderUI(
-      tags$div(style = "margin-top: 106px", timeEvents)
+      tags$div(class = "timelinetop", style = "margin-top: 106px", timeEvents)
     )
   
 

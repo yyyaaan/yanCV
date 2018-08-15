@@ -42,8 +42,13 @@ material_page(
   material_side_nav_tab_content(
     side_nav_tab_id = "tab1",
     material_row(
+      tags$div(
+        class = "col s12 m7", 
+        material_card("Yan's Experiences"), 
+        tags$div(class = "timeline",uiOutput("vTimeline"))
+      ),
       tags$div( 
-        class = "col s12 m4", 
+        class = "col s12 m5 leftmod", 
         material_card(
           "Yan PAN",
           "M.Sc. Statistics + M.Sc. Economics",tags$br(), tags$br(),
@@ -62,11 +67,6 @@ material_page(
         material_card("",uiOutput("strB")),
         tags$p(style = "font-style: italic; text-align: center", 
                tags$a(href = "http://cv.yan.fi", "more details at http://cv.yan.fi"))
-      ),
-      tags$div(
-        class = "col s12 m7", 
-        material_card("Experiences"), 
-        tags$div(class = "timeline",uiOutput("vTimeline"))
       )
     )
   ),
@@ -143,3 +143,5 @@ material_page(
     )
   )
 )
+
+# nav{display:none} .timeline .timeline-event .timeline-content {margin-top:-179px} .timelinetop{margin-top:189px !important;}.grey.lighten-4 {background-color: transparent !important;}
