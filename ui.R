@@ -44,7 +44,7 @@ material_page(
     material_row(
       tags$div(
         class = "col s12 m7", 
-        material_card("Yan's Experiences"), 
+        material_card("Kokemukset | Expereinces"), 
         tags$div(class = "timeline",uiOutput("vTimeline"))
       ),
       tags$div( 
@@ -66,7 +66,7 @@ material_page(
         material_card("",uiOutput("strA")),
         material_card("",uiOutput("strB")),
         tags$p(style = "font-style: italic; text-align: center", 
-               tags$a(href = "http://cv.yan.fi", "more details at http://cv.yan.fi"))
+               tags$a(href = "http://cv.yan.fi", "lisätiedot/details at http://cv.yan.fi"))
       )
     )
   ),
