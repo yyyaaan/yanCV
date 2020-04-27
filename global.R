@@ -1,3 +1,9 @@
+library(shinymaterial)
+library(shiny)
+library(timevis)
+library(shinyjs)
+library(DT)
+
 myColors <- c("red", "pink", "purple", "deep-purple", "indigo", "blue", "light-blue",
               "cyan", "teal", "green", "light-green", "lime", "yellow", "amber",
               "orange", "deep-orange", "brown", "grey", "blue-grey")
@@ -91,8 +97,4 @@ createEvent <- function(title = "Title", summary = "summary", detail = "detail",
     timeIcon
   )
 }
-
-
-
-
 

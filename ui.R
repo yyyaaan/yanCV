@@ -1,15 +1,26 @@
-library(shinymaterial)
-library(timevis)
-
 VAR_COL_1 <- "cyan"
 VAR_COL_2 <- "cyan" 
+feature_discovery <- '
+    <div id="discover" class="tap-target-wrapper" 
+         style="border-bottom-right-radius: 90%; background-color: rgb(0,188,212, 0.8); 
+                left:-20px; top:-20px; height:399px; width:399px; position: fixed;">
+    <div class="tap-target-wave" style="top: 0px; left: 0px; width: 112px; height: 112px;">
+      <a class="btn btn-floating btn-large cyan tap-target-origin"><i class="material-icons">menu</i></a>
+    </div>
+    <h5 style="top:99px; left:109px; position:absolute; color:white"> 
+      Change language/style<br />切换语言/风格<br />vaihda kieltä ja tyyliä
+    </p>
+    </div>
+'
 
 material_page(
  
   title = "Using Science, Data and Innovation to Make a Difference",
   nav_bar_color = VAR_COL_1,
   nav_bar_fixed = FALSE,
-  tags$head(tags$link(rel = "stylesheet", type = "text/css", href = "style.css")),
+  useShinyjs(),
+  tags$head(tags$link(rel = "stylesheet", type = "text/css", href = "style.css"),
+            tags$title("Yan - Using Science, Data and Innovation to Make a Difference")),
   
 
   # side nav ----------------------------------------------------------------
@@ -17,10 +28,9 @@ material_page(
   material_side_nav(
     fixed = FALSE,
     image_source = "theme.png",
-    
     material_side_nav_tabs(
-      side_nav_tabs = c("I am Yan" = "tab1", "Another CV" = "tab2", 
-                        "Source" = "tab4", "..."="tab3"),
+      side_nav_tabs = c("Main" = "tab1", "Timelines" = "tab2", 
+                        "Source" = "tab4", "IamYan"="tab3"),
       icons = c("assignment_ind", "assessment", "code", "drafts")
     ),
     
@@ -34,17 +44,22 @@ material_page(
     ),
     
     tags$br(),
-    tags$p(class="center-align", tags$small("Copyright Yan PAN 2018"))
+    tags$p(class="center-align", tags$small("Copyright Yan PAN 2020"))
   ),
+  
+
+  # other HTML --------------------------------------------------------------
+  HTML(feature_discovery),
   
   # 1st ---------------------------------------------------------------------
   
   material_side_nav_tab_content(
     side_nav_tab_id = "tab1",
+
     material_row(
       tags$div(
         class = "col s12 m7", 
-        material_card("Kokemukset | Expereinces"), 
+        material_card(id = "timeline_title", "Kokemukset | Expereinces"), 
         tags$div(class = "timeline",uiOutput("vTimeline"))
       ),
       tags$div( 
@@ -53,11 +68,10 @@ material_page(
           "Yan PAN",
           "M.Sc. Statistics + M.Sc. Economics",tags$br(), tags$br(),
           tags$i(class = "tiny material-icons", "email"), tags$a(href = "mailto:yan@yan.fi", "yan@yan.fi  "),
+          tags$br(),
           tags$i(class = "tiny material-icons", "phone_in_talk"),  tags$a(href = "tel:+358449199857", "+358 44 919 9857  "),
           tags$br(),
-          tags$i(class = "tiny material-icons", "dvr"),  tags$a(href = "https://boring.fi", "https://boring.fi (projects/data-server)  "),
-          tags$br(),
-          tags$i(class = "tiny material-icons", "phonelink"),  tags$a(href = "https://yan.fi", "https://yan.fi  (general)")
+          tags$i(class = "tiny material-icons", "phonelink"),  tags$a(href = "https://yan.fi", "https://yan.fi   ")
         ),
         material_card( 
           uiOutput("strTitle"),
@@ -65,8 +79,12 @@ material_page(
         ),
         material_card("",uiOutput("strA")),
         material_card("",uiOutput("strB")),
-        tags$p(style = "font-style: italic; text-align: center", 
-               tags$a(href = "http://cv.yan.fi", "lisätiedot/details at http://cv.yan.fi"))
+        material_card("", id = "more_info",
+                      tags$p(style = "font-style: italic; text-align: center", 
+                             tags$img(src = "qr.png", width = '99px'),
+                             tags$br(),
+                             tags$a(href = "http://cv.yan.fi", 
+                                    "lisätiedot/details at https://cv.yan.fi"))),
       )
     )
   ),
@@ -77,15 +95,23 @@ material_page(
   material_side_nav_tab_content(
     side_nav_tab_id = "tab2",
     material_row(
+      id = "timevis_title_row",
       material_column(width = 10, offset = 2, uiOutput("title"))
     ),
     material_row(
-      material_column(width = 12, material_card("", timevisOutput("myExp")))
+      material_column(width = 12, material_card("", timevisOutput("myExp"), tags$i("click to view detalis")))
+    ),
+    material_row( 
+      id    = "outOnClickFrame",
+      class = "scale-transition scale-in center-align", # pop-up on click timevis
+      material_column(width = 8, offset = 2, 
+                      material_card("", uiOutput("outOnClick"),
+                                    material_button("dismissPop", "Dismiss")))
     ),
     material_row(
       tags$div(
         class="col s12 m8",
-        material_card(textOutput("expt"), dataTableOutput("myExpDT"))
+        material_card(textOutput("expt"), DTOutput("myExpDT"))
       ),
       tags$div(
         class = "col s12 m4",
@@ -133,15 +159,23 @@ material_page(
       material_card(
         "Yan Pan",
         tags$br(),
-        tags$i(class = "tiny material-icons", "email"), tags$a(href = "mailto:yan@yan.fi", "yan@yan.fi  "),
-        tags$i(class = "tiny material-icons", "phone_in_talk"),  tags$a(href = "tel:+358449199857", "+358 44 919 9857  "),
-        tags$br(),
-        tags$i(class = "tiny material-icons", "dvr"),  tags$a(href = "https://boring.fi", "https://boring.fi (projects/data-server)  "),
-        tags$br(),
-        tags$i(class = "tiny material-icons", "phonelink"),  tags$a(href = "https://yan.fi", "https://yan.fi  (general)")
+        tags$p(tags$i(class = "tiny material-icons", "email"), tags$a(href = "mailto:yan@yan.fi", "yan@yan.fi  ")),
+        tags$p(tags$i(class = "tiny material-icons", "phone_in_talk"),  tags$a(href = "tel:+358449199857", "+358 44 919 9857  ")),
+        tags$p(tags$i(class = "tiny material-icons", "phonelink"),  tags$a(href = "https://yan.fi", "https://yan.fi  (general)")),
+        tags$br(), tags$div(class = "divider"), tags$br(),
+        tags$i(class = "tiny material-icons", "dvr"),  
+        tags$span("Powered by "),
+        tags$a(href = "https://datatables.net/", "datatables "),
+        tags$a(href = "https://materializecss.com/", "Materialize "),
+        tags$a(href = "https://shiny.rstudio.com/", "shiny "),
+        tags$a(href = "https://visjs.org/", "vis.js "),
+        tags$span(" and R-package "),
+        tags$a(href = "https://cran.r-project.org/package=DT", "DT "),
+        tags$a(href = "https://cran.r-project.org/package=shinyjs", "shinyjs "),
+        tags$a(href = "https://cran.r-project.org/package=shinymaterial", "shinymaterial "),
+        tags$a(href = "https://cran.r-project.org/packages=timevis", "timevis "),
+        tags$span(" with customized CSS and jQuery. Programmed mainly in R.")
       )
     )
   )
 )
-
-# nav{display:none} .timeline .timeline-event .timeline-content {margin-top:-179px} .timelinetop{margin-top:189px !important;}.grey.lighten-4 {background-color: transparent !important;}

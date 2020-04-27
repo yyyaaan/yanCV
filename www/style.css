@@ -1,3 +1,12 @@
+.special{
+    margin-top: 199px !important;
+}
+.specialx{
+    margin-top: -199px !important;
+}
+.brand-logo{
+  font-size: 1.3rem !important;
+}
 label{ 
   color:#C0C0C0;
 }
