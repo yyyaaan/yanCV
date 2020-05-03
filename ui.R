@@ -66,11 +66,16 @@ material_page(
         class = "col s12 m5 leftmod", 
         material_card(
           "Yan PAN",
-          "M.Sc. Statistics + M.Sc. Economics",tags$br(), tags$br(),
-          tags$i(class = "tiny material-icons", "email"), tags$a(href = "mailto:yan@yan.fi", "yan@yan.fi  "),
-          tags$br(),
-          tags$i(class = "tiny material-icons", "phone_in_talk"),  tags$a(href = "tel:+358449199857", "+358 44 919 9857  "),
-          tags$br(),
+          "M.Sc. Statistics + M.Sc. Economics",tags$br(),
+          "Expertise in data science ", 
+          tags$img(src = "import-R.png", height = "20px"),
+          tags$img(src = "import-SQL.png", height = "23px"),
+          tags$img(src = "import-SAS.png", height = "20px"),
+          tags$img(src = "import-GCP.png", height = "25px"),
+          tags$img(src = "import-PYTHON.png", height = "20px"),
+          tags$br(), tags$br(),
+          tags$i(class = "tiny material-icons", "email"), tags$a(href = "mailto:yan@yan.fi", "yan@yan.fi  "), tags$br(),
+          tags$i(class = "tiny material-icons", "phone_in_talk"),  tags$a(href = "tel:+358449199857", "+358 44 919 9857  "), tags$br(),
           tags$i(class = "tiny material-icons", "phonelink"),  tags$a(href = "https://yan.fi", "https://yan.fi   ")
         ),
         material_card( 
