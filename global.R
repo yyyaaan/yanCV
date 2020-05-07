@@ -3,6 +3,8 @@ library(shiny)
 library(timevis)
 library(shinyjs)
 library(DT)
+options(stringsAsFactors = FALSE)
+
 
 myColors <- c("red", "pink", "purple", "deep-purple", "indigo", "blue", "light-blue",
               "cyan", "teal", "green", "light-green", "lime", "yellow", "amber",
@@ -11,9 +13,30 @@ myColors.rgb <- c("rgba(244, 67, 54, 0.1)", "rgba(233, 30, 99, 0.1)", "rgba(156,
                   "rgba(0, 188, 212, 0.1)", "rgba(0, 150, 136, 0.1)", "rgba(76, 175, 80, 0.1)", "rgba(139, 195, 74, 0.1)", "rgba(205, 220, 57, 0.1)", "rgba(255, 235, 59, 0.1)", "rgba(255, 193, 7, 0.1)",
                   "rgba(255, 152, 0, 0.1)", "rgba(255, 87, 34, 0.1)", "rgba(121, 85, 72, 0.1)", "rgba(158, 158, 158, 0.1)", "rgba(96, 125, 139, 0.1)")
 
-syncGoogle <- function(){
+syncData <- function(){
+  # get Google Sheet (online)
   all <- gsheet::gsheet2tbl("https://docs.google.com/spreadsheets/d/1CoMi_EfK950iXk_iuCSujY6Sq6e38VnYExXDo4sMONA/edit#gid=1164046835")
   saveRDS(all, file = "all.rds")
+  
+  # get coursera info (copy <body> elements to coursera file)
+  library(rvest)
+  contents <- read_html("coursera") %>% html_nodes(".rc-AccomplishmentCard")
+  
+  coursera <- data.frame( 
+    label = contents %>% html_nodes(".linkedin-detail-label") %>% html_text(),
+    value = contents %>% html_nodes(".linkedin-detail-value") %>% html_text())
+  coursera <- data.frame(
+    name  = coursera[coursera$label == 'Name:', 'value'],
+    issue = coursera[coursera$label == 'Issue Date:', 'value'],
+    id    = coursera[coursera$label == 'Credential ID:', 'value'],
+    by    = contents %>% html_nodes(".caption-text") %>% html_text())
+  
+  coursera$detail = paste("by", coursera$by, "on Coursera.org,", coursera$issue)
+  coursera$link   = paste0("coursera.org/verify/", coursera$id)
+  coursera$link   = paste0('<a href = "http://', coursera$link, '" target = "_blank"> Verify at ', coursera$link, '</a>')
+  coursera$img    = paste0("coursera_", coursera$id, ".jpg")
+  
+  saveRDS(coursera, file = "coursera.rds")
 }
 
 getField <- function(lang = "CHN"){
@@ -97,4 +120,3 @@ createEvent <- function(title = "Title", summary = "summary", detail = "detail",
     timeIcon
   )
 }
-

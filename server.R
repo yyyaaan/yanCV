@@ -112,6 +112,19 @@ shinyServer(function(input, output, session) {
     
   })
   
+
+  # Gallery: certification (no language dependence)--------------------------
+  certGallery <- NULL
+  coursera <- readRDS("coursera.rds")
+  for (i in 1:nrow(coursera)) {
+    certGallery[[i]] <- tags$div(class = "col s12 m4",
+                                 material_card(coursera$name[i],
+                                               tags$p(coursera$detail[i]),
+                                               tags$img(src = coursera$img[i], width = "100%"),
+                                               HTML(coursera$link[i])))
+  }
+  output$out_coursera <- renderUI(tagList(certGallery))
+  
   
   # click modal in timeVis --------------------------------------------------
   

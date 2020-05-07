@@ -4,6 +4,10 @@
 .specialx{
     margin-top: -199px !important;
 }
+.bwimg {
+  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(50%);
+}
 .brand-logo{
   font-size: 1.3rem !important;
 }

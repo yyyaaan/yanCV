@@ -29,9 +29,9 @@ material_page(
     fixed = FALSE,
     image_source = "theme.png",
     material_side_nav_tabs(
-      side_nav_tabs = c("Main" = "tab1", "Timelines" = "tab2", 
-                        "Source" = "tab4", "IamYan"="tab3"),
-      icons = c("assignment_ind", "assessment", "code", "drafts")
+      side_nav_tabs = c("Main"   = "tab1",        "Timelines" = "tab2", 
+                        "Certificates" ="tab3", "Source"    = "tab4"),
+      icons = c("assignment_ind", "assessment", "book", "code")
     ),
     
     tags$hr(),
@@ -68,11 +68,11 @@ material_page(
           "Yan PAN",
           "M.Sc. Statistics + M.Sc. Economics",tags$br(),
           "Expertise in data science ", 
-          tags$img(src = "import-R.png", height = "20px"),
-          tags$img(src = "import-SQL.png", height = "23px"),
-          tags$img(src = "import-SAS.png", height = "20px"),
-          tags$img(src = "import-GCP.png", height = "25px"),
-          tags$img(src = "import-PYTHON.png", height = "20px"),
+          tags$img(src = "import-R.png",      class = "bwimg", height = "20px"),
+          tags$img(src = "import-SQL.png",    class = "bwimg", height = "23px"),
+          tags$img(src = "import-SAS.png",    class = "bwimg", height = "20px"),
+          tags$img(src = "import-GCP.png",    class = "bwimg", height = "25px"),
+          tags$img(src = "import-PYTHON.png", class = "bwimg", height = "20px"),
           tags$br(), tags$br(),
           tags$i(class = "tiny material-icons", "email"), tags$a(href = "mailto:yan@yan.fi", "yan@yan.fi  "), tags$br(),
           tags$i(class = "tiny material-icons", "phone_in_talk"),  tags$a(href = "tel:+358449199857", "+358 44 919 9857  "), tags$br(),
@@ -161,12 +161,12 @@ material_page(
   material_side_nav_tab_content(
     side_nav_tab_id = "tab3",
     tags$div(class = "col s12 m12",
-      material_card(
-        "Yan Pan",
-        tags$br(),
+      material_card("",
+        tags$div(class = "left", tags$img(src = "Yan.jpg", height = "200px")),
+        tags$h5("Yan Pan"), tags$br(),
         tags$p(tags$i(class = "tiny material-icons", "email"), tags$a(href = "mailto:yan@yan.fi", "yan@yan.fi  ")),
         tags$p(tags$i(class = "tiny material-icons", "phone_in_talk"),  tags$a(href = "tel:+358449199857", "+358 44 919 9857  ")),
-        tags$p(tags$i(class = "tiny material-icons", "phonelink"),  tags$a(href = "https://yan.fi", "https://yan.fi  (general)")),
+        tags$p(tags$i(class = "tiny material-icons", "phonelink"),  tags$a(href = "https://yan.fi", "https://yan.fi   ")),
         tags$br(), tags$div(class = "divider"), tags$br(),
         tags$i(class = "tiny material-icons", "dvr"),  
         tags$span("Powered by "),
@@ -180,7 +180,8 @@ material_page(
         tags$a(href = "https://cran.r-project.org/package=shinymaterial", "shinymaterial "),
         tags$a(href = "https://cran.r-project.org/packages=timevis", "timevis "),
         tags$span(" with customized CSS and jQuery. Programmed mainly in R.")
-      )
+      ),
+      material_row(uiOutput("out_coursera"))
     )
   )
 )
